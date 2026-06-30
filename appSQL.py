@@ -8,7 +8,8 @@ conexion = mysql.connector.connect(
     host="localhost",       
     user="root",
     password="Martin$0119",
-    database="bd_lavadora"
+    database="bd_lavadora",
+    port=3306
 )
 
 #Crear cursor
@@ -51,17 +52,18 @@ if conexion.is_connected():
     st.title("Comandos básicos de MySQL")
     st.dataframe(df.head())
     st.dataframe(df.tail())
-    st.dataframe(df.info())
+    df.info()
     st.dataframe(df.describe())
     print(df.info)
-    st.write("Informacion del DataFrame:", df.info())
+    st.write("Informacion del DataFrame:")
+    df.info()
     st.write("Numero de filas y columnas:", df.shape)
     st.write("Nombres de las columnas:", df.columns)
     st.dataframe(df.describe())
     st.write("Valores nulos:", df.isnull().sum())
     st.write("Tipos de datos de las columnas:", df.dtypes)
     st.write("Valores duplicados clientes:", df.duplicated().sum())
-    st.write("Valores duuplicados productos:", df_productos.duplicated().sum())
+    st.write("Valores duplicados productos:", df_productos.duplicated().sum())
 
 
 else:
